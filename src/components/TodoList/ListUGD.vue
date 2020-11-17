@@ -70,7 +70,6 @@
                 </template>
             </v-data-table>
         </v-card>
-
         <v-dialog v-model="dialogDelete" persistent max-width="600px">
             <v-card>
                 <v-card-title>
