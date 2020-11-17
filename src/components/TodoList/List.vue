@@ -10,10 +10,10 @@
                     single-line
                     hide-details
                 ></v-text-field>
-            <v-spacer></v-spacer>
-            <v-btn color="success" dark @click="dialog = true">
-                Tambah
-            </v-btn>
+                <v-spacer></v-spacer>
+                <v-btn color="success" dark @click="dialog = true">
+                    Tambah
+                </v-btn>
             </v-card-title>
             <v-data-table :headers="headers" :items="todos" :search="search">
                 <template v-slot:[`item.actions`]="{ item }">
@@ -33,22 +33,22 @@
                 </v-card-title>
                 <v-card-text>
                     <v-container>
-                    <v-text-field
-                        v-model="formTodo.task"
-                        label="Task"
-                        required
-                    ></v-text-field>
-                    <v-select
-                        v-model="formTodo.priority"
-                        :items="['Penting', 'Biasa', 'Tidak penting']"
-                        label="Priority"
-                        required
-                    ></v-select>
-                    <v-textarea
-                        v-model="formTodo.note"
-                        label="Note"
-                        required
-                    ></v-textarea>
+                        <v-text-field
+                            v-model="formTodo.task"
+                            label="Task"
+                            required
+                        ></v-text-field>
+                        <v-select
+                            v-model="formTodo.priority"
+                            :items="['Penting', 'Biasa', 'Tidak penting']"
+                            label="Priority"
+                            required
+                        ></v-select>
+                        <v-textarea
+                            v-model="formTodo.note"
+                            label="Note"
+                            required
+                        ></v-textarea>
                     </v-container>
                 </v-card-text>
                 <v-card-actions>
@@ -65,13 +65,13 @@
     </v-main>
 </template>
 <script>
-    export default {
-        name: "List",
-        data() {
-            return {
-                search: null,
-                dialog: false,
-                headers: [
+export default {
+    name: "List",
+    data() {
+        return {
+            search: null,
+            dialog: false,
+            headers: [
                 {
                     text: "Task",
                     align: "start",
@@ -81,48 +81,68 @@
                 { text: "Priority", value: "priority" },
                 { text: "Note", value: "note" },
                 { text: "Actions", value: "actions" },
-                ],
-                todos: [
-                    {
+            ],
+            todos: [
+                {
                     task: "bernafas",
                     priority: "Penting",
                     note: "huffttt",
-                    },
-                    {
+                },
+                {
                     task: "nongkrong",
                     priority: "Tidak penting",
                     note: "bersama tman2",
-                    },
-                    {
+                },
+                {
                     task: "masak",
                     priority: "Biasa",
                     note: "masak air 500ml",
-                    },
-                    ],
-                formTodo: {
+                },
+                {
+                    task: "masak",
+                    priority: "Biasa",
+                    note: "masak air 500ml",
+                },
+                {
+                    task: "masak",
+                    priority: "Biasa",
+                    note: "masak air 500ml",
+                },
+                {
+                    task: "masak",
+                    priority: "Biasa",
+                    note: "masak air 500ml",
+                },
+                {
+                    task: "masak",
+                    priority: "Biasa",
+                    note: "masak air 500ml",
+                },
+            ],
+            formTodo: {
                 task: null,
                 priority: null,
                 note: null,
-                    },
+            },
+        };
+    },
+    methods: {
+        save() {
+            this.todos.push(this.formTodo);
+            this.resetForm();
+            this.dialog = false;
+        },
+        cancel() {
+            this.resetForm();
+            this.dialog = false;
+        },
+        resetForm() {
+            this.formTodo = {
+                task: null,
+                priority: null,
+                note: null,
             };
         },
-        methods: {
-            save() {
-                this.todos.push(this.formTodo);
-                this.resetForm();
-                this.dialog = false;
-            },
-            cancel() {
-                this.resetForm();
-                this.dialog = false;
-            },
-            resetForm() {
-                this.formTodo = {
-                task: null,
-                priority: null,
-                note: null,
-                };
-            },
-        },
-    };
+    },
+};
 </script>
